@@ -58,7 +58,7 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-#Work Space Scene and Meta
+#Personal Workspace Scene
 Assets/Scenes/WorkSpaceScene.unity
 Assets/Scenes/WorkSpaceScene.unity.meta
 
