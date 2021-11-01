@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundMask ;
     public GameObject aimCursor ;
     private string weaponMode ;
+    private Vector3 movementDirection ;
     private Vector3 mousePosition ;
     public GameObject rangedWeaponAmmo ;
 
@@ -24,7 +25,7 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit raycastHit, groundMask)) {
             mousePosition = raycastHit.point ;
         }
-        Vector3 movementDirection = (mousePosition - transform.position).normalized ;
+        movementDirection = (mousePosition - transform.position).normalized ;
         movementDirection.y = 0f;
         anim.SetFloat("Horizontal", movementDirection.x) ;
         anim.SetFloat("Vertical", movementDirection.z) ;
@@ -82,14 +83,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void ShootRangedWeapon() {
-        Vector3 shootingDirection = mousePosition ;
-        shootingDirection.y = 0.04f ;
-        shootingDirection.Normalize() ;
         if(Input.GetMouseButtonUp(0)) {
-            GameObject arrow = Instantiate(rangedWeaponAmmo, new Vector3(transform.position.x + 0.06f, 0.04f, transform.position.z), Quaternion.identity) ;
-            arrow.GetComponent<Rigidbody>().velocity = shootingDirection * 5.0f;
-            arrow.transform.Rotate(0, 0, Mathf.Atan2(shootingDirection.z, shootingDirection.x) * Mathf.Rad2Deg) ;
-            Destroy(arrow, 2.0f) ;
+            GameObject arrow = Instantiate(rangedWeaponAmmo, transform.position, Quaternion.identity) ;
+            arrow.GetComponent<Rigidbody>().velocity = movementDirection * 2.0f;
+            arrow.transform.Rotate(0, 0, Mathf.Atan2(-movementDirection.x, movementDirection.z) * Mathf.Rad2Deg) ;
+            Destroy(arrow, 0.5f) ;
         }
     }
 }
