@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class playerControllerScript : MonoBehaviour
 {
-    public float movementSpeed = 5.0f;
     public Animator anim;
     public GameObject rangedWeaponAmmunitionPrefab;
 
+    private float movementSpeed = 5.0f;
     private float horizontalInput;
     private float verticalInput;
     private Rigidbody2D rbody;
@@ -43,13 +43,10 @@ public class playerControllerScript : MonoBehaviour
 
     private void playerMovementHandler()
     {
-        if(Input.GetKeyUp(KeyCode.LeftShift) && (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || 
-        Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D)))
+        rbody.velocity = new Vector2(horizontalInput, verticalInput)  * movementSpeed;
+        if(movementSpeed == 150.0f)
         {
-            rbody.velocity = new Vector2(horizontalInput * (20 * movementSpeed), verticalInput * (20 * movementSpeed));
-        }
-        else{
-            rbody.velocity = new Vector2(horizontalInput * movementSpeed, verticalInput * movementSpeed);
+            movementSpeed = 5.0f;
         }
     }
 
@@ -71,7 +68,8 @@ public class playerControllerScript : MonoBehaviour
         {
             playerInteractionEventHandler();
         }
-        else if(Input.GetKeyDown(KeyCode.Alpha1))
+
+        if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             changeCombatMode(1);
         }
@@ -83,9 +81,15 @@ public class playerControllerScript : MonoBehaviour
         {
             changeCombatMode(0);
         }
-        else if(Input.GetMouseButtonDown(0))
+
+        if(Input.GetMouseButtonDown(0))
         {
             combatHandler();
+        }
+
+        if(Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            movementSpeed = 150.0f;
         }
 
     }
