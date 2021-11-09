@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
+<<<<<<< Updated upstream
+=======
+    public bool displayGridGizmos;//Show the grid
+>>>>>>> Stashed changes
     public LayerMask unwalkableMask;
     public Vector2 gridWorldSize; //Area the grid covers
     public float nodeRadius; //Space each node covers
@@ -12,7 +16,11 @@ public class Grid : MonoBehaviour
     float nodeDiameter;
     int gridSizeX, gridSizeY;
 
+<<<<<<< Updated upstream
     void Start()
+=======
+    void Awake()
+>>>>>>> Stashed changes
     {
         nodeDiameter = nodeRadius * 2;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter); //Rounded to integer as we need full nodes
@@ -24,6 +32,7 @@ public class Grid : MonoBehaviour
     void CreateGrid()
     {
         grid = new Node[gridSizeX, gridSizeY]; //Array instance of type Node
+<<<<<<< Updated upstream
         Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.forward * gridWorldSize.y / 2;//Forward in 3D space
 
         for (int x = 0; x < gridSizeX; x++)
@@ -35,6 +44,17 @@ public class Grid : MonoBehaviour
                 bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, unwalkableMask)); //If there is a collision (unwalkableMask) return false
                 grid[x, y] = new Node(walkable, worldPoint, x, y);
                 Debug.Log("Value:" + grid[x, y]);
+=======
+        Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.up * gridWorldSize.y / 2;//Up in 2D space
+
+        for (int x = 0; x < gridSizeX; x++)
+        {
+            for (int y = 0; y < gridSizeY; y++)
+            {
+                Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.up * (y * nodeDiameter + nodeRadius);//Forward in 3D space, UP in 2D
+                bool walkable = !(Physics2D.OverlapCircle(worldPoint, nodeRadius, unwalkableMask)); //If there is a collision (unwalkableMask) return false OverlapCircle replace CheckSphere
+                grid[x, y] = new Node(walkable, worldPoint, x, y);
+>>>>>>> Stashed changes
             }
         }
     }
@@ -65,7 +85,11 @@ public class Grid : MonoBehaviour
     public Node GetNodeFromWorldPoint(Vector3 worldPosition)//Find what node is at a specific point
     {
         float percentX = Mathf.Clamp01(worldPosition.x/gridWorldSize.x + 0.5f);//How far along the grid is it (between 0 and 1)
+<<<<<<< Updated upstream
         float percentY = Mathf.Clamp01(worldPosition.z/gridWorldSize.y + 0.5f);//How far up the grid is it (between 0 and 1)
+=======
+        float percentY = Mathf.Clamp01(worldPosition.y/gridWorldSize.y + 0.5f);//How far up the grid is it (between 0 and 1) CHANGED THIS WORLD POSITION Z TO Y
+>>>>>>> Stashed changes
 
         int x = Mathf.RoundToInt((gridSizeX-1) * percentX);
         int y = Mathf.RoundToInt((gridSizeY-1) * percentY);
@@ -75,16 +99,25 @@ public class Grid : MonoBehaviour
 
     //Always draws these after running start
 
+<<<<<<< Updated upstream
     public List<Node> path;
     void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));//Y axis represents z in 3D space, draws cube around map
 
         if (grid != null)
+=======
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, gridWorldSize.y, 1));//Y axis represents z in 3D space, draws cube around map
+
+        if (grid != null && displayGridGizmos)
+>>>>>>> Stashed changes
         {
             foreach (Node n in grid)
             {
                 Gizmos.color = (n.walkable) ? Color.white : Color.red; //The cube will be white if its walkable and red otherwise
+<<<<<<< Updated upstream
                 if (path != null) //If a path exists and contains the current node, paint that node black
                 {
                     if (path.Contains(n))
@@ -92,6 +125,8 @@ public class Grid : MonoBehaviour
                         Gizmos.color = Color.black;
                     }
                 }
+=======
+>>>>>>> Stashed changes
                 Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f)); //Draws a cube around world position of the size 1/1/1 scaled by a little less than the diameter
             }
         }
