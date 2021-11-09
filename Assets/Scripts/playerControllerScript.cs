@@ -7,12 +7,13 @@ public class playerControllerScript : MonoBehaviour
     public Animator anim;
     public GameObject rangedWeaponAmmunitionPrefab;
 
-    private float movementSpeed = 5.0f;
+    private float movementSpeed = 7.0f;
     private float horizontalInput;
     private float verticalInput;
     private Rigidbody2D rbody;
     private GameObject collisionSourceObject;
     private int currentCombatMode = 0;
+    private int health = 10;
 
     private void Awake()
     {
@@ -20,13 +21,13 @@ public class playerControllerScript : MonoBehaviour
     }
 
    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         playerAnimationHandler();
         playerInputHandler();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         playerMovementHandler();
     }
@@ -123,6 +124,15 @@ public class playerControllerScript : MonoBehaviour
             arrow.GetComponent<Rigidbody2D>().velocity = shootingDirection * 15.0f;
             arrow.transform.Rotate(0f, 0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
             Destroy(arrow, 2.0f);
+        }
+    }
+
+    public void takeDamage(int damage){
+        health -= damage;
+        if(health==0)
+        {
+            Debug.Log("Game Over");
+            //Reload last save
         }
     }
 }
