@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Tree
   - Log
+  - ironRock
+  - mineable
   layers:
   - Default
   - TransparentFX

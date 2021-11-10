@@ -102,6 +102,12 @@ public class playerControllerScript : MonoBehaviour
                 if(collisionSourceObject.tag == "Tree"){
                     collisionSourceObject.GetComponent<treeScript>().takeDamage();
                 }
+                if(collisionSourceObject.tag == "ironRock"){
+                    collisionSourceObject.GetComponent<ironoreScript>().takeDamage();
+                }
+                if(collisionSourceObject.tag == "mineable"){
+                    collisionSourceObject.GetComponent<ironoreScript>().takeDamage();
+                }
             }
     }
 
