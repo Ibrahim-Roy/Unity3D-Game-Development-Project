@@ -2,10 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerControllerScript : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public Animator anim;
-    public GameObject rangedWeaponAmmunitionPrefab;
+
+    public void takeDamage(float damage){
+        if(health > 1)
+        {
+            health--;
+            StartCoroutine(animateTakeDamage(0.2f));
+            //Debug
+            Debug.Log("Player Health: " + health);
+        }
+        else
+        {
+            //Debug
+            Debug.Log("Player is dead");
+            //Destroy(gameObject);
+        }
+    }
 
     private float movementSpeed = 7.0f;
     private float horizontalInput;
@@ -13,7 +28,7 @@ public class playerControllerScript : MonoBehaviour
     private Rigidbody2D rbody;
     private GameObject collisionSourceObject;
     private int currentCombatMode = 0;
-    private int health = 10;
+    private float health = 10;
 
     private void Awake()
     {
@@ -115,24 +130,20 @@ public class playerControllerScript : MonoBehaviour
     {
         anim.SetTrigger("Attack");
         //Ranged
-        if(currentCombatMode == 1){
-            Vector3 weaponBarrelPosition = ((transform.GetChild(0).gameObject).transform.GetChild(0).gameObject).transform.position;
-            GameObject arrow = Instantiate(rangedWeaponAmmunitionPrefab, weaponBarrelPosition, Quaternion.identity);
-            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mouseWorldPosition.z = 0;
-            Vector3 shootingDirection = (mouseWorldPosition - transform.position).normalized;
-            arrow.GetComponent<Rigidbody2D>().velocity = shootingDirection * 15.0f;
-            arrow.transform.Rotate(0f, 0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
-            Destroy(arrow, 2.0f);
+        if(currentCombatMode == 1)
+        {
+            ((transform.GetChild(0).gameObject).transform.GetChild(0).gameObject).GetComponent<RangedWeapon>().shoot();
         }
+        
     }
 
-    public void takeDamage(int damage){
-        health -= damage;
-        if(health==0)
-        {
-            Debug.Log("Game Over");
-            //Reload last save
-        }
+    private IEnumerator animateTakeDamage(float time)
+    {
+        Color playerColour = gameObject.GetComponent<SpriteRenderer>().color;
+        playerColour.a = 0.5f;
+        gameObject.GetComponent<SpriteRenderer>().color = playerColour;
+        yield return new WaitForSeconds(time);
+        playerColour.a = 1f;
+        gameObject.GetComponent<SpriteRenderer>().color = playerColour;
     }
 }

@@ -16,6 +16,7 @@ public abstract class HostileNPC : MonoBehaviour
         if(health > 1)
         {
             health--;
+            StartCoroutine(animateTakeDamage(0.2f));
         }
         else
         {
@@ -89,5 +90,15 @@ public abstract class HostileNPC : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, target.transform.position, -movementSpeed * Time.deltaTime);
         }
+    }
+
+    private IEnumerator animateTakeDamage(float time)
+    {
+        Color currentColour = gameObject.GetComponent<SpriteRenderer>().color;
+        currentColour.a = 0.5f;
+        gameObject.GetComponent<SpriteRenderer>().color = currentColour;
+        yield return new WaitForSeconds(time);
+        currentColour.a = 1f;
+        gameObject.GetComponent<SpriteRenderer>().color = currentColour;
     }
 }

@@ -33,12 +33,19 @@ public class ResourceObjectScript : MonoBehaviour
     {
         if(currentHealth>0)
         {
-            Shake();
+            if(anim != null)
+            {
+                Shake();
+            }  
             currentHealth--;
         }
         else if(!destroyed)
         {
-            anim.SetBool("Harvested", true);
+            destroyed = true;
+            if(anim != null)
+            {
+                anim.SetBool("Harvested", true);
+            }
             Instantiate(resourceMaterialPrefab, transform.position, transform.rotation);
             Invoke("growBack", lifeCycle);
         }
@@ -60,7 +67,11 @@ public class ResourceObjectScript : MonoBehaviour
     }
 
     private void growBack(){
+        destroyed = false;
         currentHealth = totalHealth;
-        anim.SetBool("Harvested", false);
+        if(anim != null)
+        {
+            anim.SetBool("Harvested", false);
+        }
     }
 }

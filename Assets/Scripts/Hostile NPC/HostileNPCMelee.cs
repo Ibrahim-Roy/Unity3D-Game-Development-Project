@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HostileNPCRanged : HostileNPC
+public class HostileNPCMelee : HostileNPC
 {
     protected override void Start()
     {
@@ -13,17 +13,18 @@ public class HostileNPCRanged : HostileNPC
     {
         base.Update();
     }
+
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "Player")
         {
-            target.GetComponent<playerControllerScript>().takeDamage(2);
+            target.GetComponent<Player>().takeDamage(2f);
         }
     }
 
     private void OnCollisionStay2D(Collision2D other) {
         if(other.gameObject.tag == "Player")
         {
-            target.GetComponent<playerControllerScript>().takeDamage(2);
+            target.GetComponent<Player>().takeDamage(2f);
         }
         else
         {

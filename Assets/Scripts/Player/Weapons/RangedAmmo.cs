@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedWeapon : MonoBehaviour
+public class RangedAmmo : MonoBehaviour
 {
     public float damage;
 
@@ -11,6 +11,9 @@ public class RangedWeapon : MonoBehaviour
         {
             other.gameObject.GetComponent<HostileNPC>().takeDamage(damage);
         }
-        Destroy(gameObject);    
+        if(other.gameObject.tag != "Flat")
+        {
+            Destroy(gameObject);
+        }    
     }
 }

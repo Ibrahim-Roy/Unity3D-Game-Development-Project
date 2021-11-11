@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 92ce267ffbd1a1845bc0737aa1a2344c
+guid: b633baf386b094444b2b19dc99b143b6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7331315201791160908
-    second: BigRock1
+      213: -7259131561078410326
+    second: quicksand_0
   - first:
-      213: -7747019218095681027
-    second: smallRock1
+      213: -2043928733047001441
+    second: quicksand_1
+  - first:
+      213: -6646645559297063891
+    second: quicksand_2
+  - first:
+      213: 6198528372407036601
+    second: quicksand_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -38,7 +44,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -133,43 +139,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BigRock1
+      name: quicksand_0
       rect:
         serializedVersion: 2
         x: 5
-        y: 8
-        width: 50
-        height: 49
+        y: 45
+        width: 51
+        height: 12
       alignment: 9
-      pivot: {x: 0.47602993, y: 0.092346326}
+      pivot: {x: 1, y: 2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c42fe2345501eb560800000000000000
-      internalID: 7331315201791160908
+      spriteID: aa338144e42624b90800000000000000
+      internalID: -7259131561078410326
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: smallRock1
+      name: quicksand_1
       rect:
         serializedVersion: 2
-        x: 54
-        y: 5
-        width: 8
-        height: 9
+        x: 6
+        y: 31
+        width: 51
+        height: 12
       alignment: 9
-      pivot: {x: 0.5000005, y: 0.2003745}
+      pivot: {x: 1, y: 2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df1584d011f0d7490800000000000000
-      internalID: -7747019218095681027
+      spriteID: f9ee48085a182a3e0800000000000000
+      internalID: -2043928733047001441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quicksand_2
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 17
+        width: 51
+        height: 12
+      alignment: 9
+      pivot: {x: 1, y: 2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d24cb2a441f52c3a0800000000000000
+      internalID: -6646645559297063891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quicksand_3
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 2
+        width: 51
+        height: 12
+      alignment: 9
+      pivot: {x: 1, y: 2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ba6087a6b8950650800000000000000
+      internalID: 6198528372407036601
       vertices: []
       indices: 
       edges: []
