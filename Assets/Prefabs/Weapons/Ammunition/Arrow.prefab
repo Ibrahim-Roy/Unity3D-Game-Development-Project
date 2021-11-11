@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6830932808520208054}
   - component: {fileID: 1354799889145590239}
   - component: {fileID: 791292045912312123}
+  - component: {fileID: 2263261834384288795}
+  - component: {fileID: 3294788873533877106}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -105,3 +107,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &2263261834384288795
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252242145922164523}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.12669548, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.026577624
+--- !u!114 &3294788873533877106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252242145922164523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b922366514cfaa48b8a90c5260f4d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0

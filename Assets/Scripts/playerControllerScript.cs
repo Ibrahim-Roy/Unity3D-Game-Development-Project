@@ -99,8 +99,8 @@ public class playerControllerScript : MonoBehaviour
     {
         if(collisionSourceObject != null)
             {
-                if(collisionSourceObject.tag == "Tree"){
-                    collisionSourceObject.GetComponent<treeScript>().takeDamage();
+                if(collisionSourceObject.tag == "ResourceObject"){
+                    collisionSourceObject.GetComponent<ResourceObjectScript>().takeDamage();
                 }
             }
     }

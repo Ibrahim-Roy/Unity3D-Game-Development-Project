@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Tree
-  - Log
+  - ResourceObject
+  - HostileNPC
   layers:
   - Default
   - TransparentFX
