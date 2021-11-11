@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 public class Pathfinding : MonoBehaviour
 {
@@ -66,16 +67,26 @@ public class Pathfinding : MonoBehaviour
                     {
                         openSet.Add(neighbour);
 =======
+=======
+>>>>>>> Stashed changes
 using System;//Reverse list
 
 public class Pathfinding : MonoBehaviour
 {
+<<<<<<< Updated upstream
     PathRequests requestManager;
+=======
+    PathRequestManager requestManager;
+>>>>>>> Stashed changes
     Grid grid;
 
     void Awake() //Before start
     {
+<<<<<<< Updated upstream
         requestManager = GetComponent<PathRequests>();
+=======
+        requestManager = GetComponent<PathRequestManager>();
+>>>>>>> Stashed changes
         grid = GetComponent<Grid>(); //Get grid from grid script
     }
 
@@ -136,16 +147,22 @@ public class Pathfinding : MonoBehaviour
                         {
                             openSet.Add(neighbour);
                         }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                     }
                 }
             }
         }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     }
 
     void RetracePath(Node startNode, Node endNode)
 =======
+=======
+>>>>>>> Stashed changes
         yield return null; //Wait for 1 frame before returning
         if(pathSuccess)
         {
@@ -156,6 +173,9 @@ public class Pathfinding : MonoBehaviour
     }
 
     Vector3[] RetracePath(Node startNode, Node endNode)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     {
         List<Node> path = new List<Node>();
@@ -166,10 +186,13 @@ public class Pathfinding : MonoBehaviour
             currentNode = currentNode.parent;
         }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         path.Reverse();
 
         grid.path = path;
 =======
+=======
+>>>>>>> Stashed changes
         Vector3[] waypoints = SimplifyPath(path);
         Array.Reverse(waypoints);
         return waypoints;
@@ -191,6 +214,9 @@ public class Pathfinding : MonoBehaviour
         }            
         return waypoints.ToArray();
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }
 

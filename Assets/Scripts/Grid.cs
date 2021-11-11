@@ -5,6 +5,10 @@ using UnityEngine;
 public class Grid : MonoBehaviour
 {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+    public bool displayGridGizmos;//Show the grid
+>>>>>>> Stashed changes
 =======
     public bool displayGridGizmos;//Show the grid
 >>>>>>> Stashed changes
@@ -17,7 +21,11 @@ public class Grid : MonoBehaviour
     int gridSizeX, gridSizeY;
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     void Start()
+=======
+    void Awake()
+>>>>>>> Stashed changes
 =======
     void Awake()
 >>>>>>> Stashed changes
@@ -33,6 +41,7 @@ public class Grid : MonoBehaviour
     {
         grid = new Node[gridSizeX, gridSizeY]; //Array instance of type Node
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.forward * gridWorldSize.y / 2;//Forward in 3D space
 
         for (int x = 0; x < gridSizeX; x++)
@@ -45,6 +54,8 @@ public class Grid : MonoBehaviour
                 grid[x, y] = new Node(walkable, worldPoint, x, y);
                 Debug.Log("Value:" + grid[x, y]);
 =======
+=======
+>>>>>>> Stashed changes
         Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.up * gridWorldSize.y / 2;//Up in 2D space
 
         for (int x = 0; x < gridSizeX; x++)
@@ -54,6 +65,9 @@ public class Grid : MonoBehaviour
                 Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.up * (y * nodeDiameter + nodeRadius);//Forward in 3D space, UP in 2D
                 bool walkable = !(Physics2D.OverlapCircle(worldPoint, nodeRadius, unwalkableMask)); //If there is a collision (unwalkableMask) return false OverlapCircle replace CheckSphere
                 grid[x, y] = new Node(walkable, worldPoint, x, y);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             }
         }
@@ -86,7 +100,11 @@ public class Grid : MonoBehaviour
     {
         float percentX = Mathf.Clamp01(worldPosition.x/gridWorldSize.x + 0.5f);//How far along the grid is it (between 0 and 1)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         float percentY = Mathf.Clamp01(worldPosition.z/gridWorldSize.y + 0.5f);//How far up the grid is it (between 0 and 1)
+=======
+        float percentY = Mathf.Clamp01(worldPosition.y/gridWorldSize.y + 0.5f);//How far up the grid is it (between 0 and 1) CHANGED THIS WORLD POSITION Z TO Y
+>>>>>>> Stashed changes
 =======
         float percentY = Mathf.Clamp01(worldPosition.y/gridWorldSize.y + 0.5f);//How far up the grid is it (between 0 and 1) CHANGED THIS WORLD POSITION Z TO Y
 >>>>>>> Stashed changes
@@ -100,6 +118,7 @@ public class Grid : MonoBehaviour
     //Always draws these after running start
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     public List<Node> path;
     void OnDrawGizmos()
     {
@@ -107,16 +126,22 @@ public class Grid : MonoBehaviour
 
         if (grid != null)
 =======
+=======
+>>>>>>> Stashed changes
     void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, gridWorldSize.y, 1));//Y axis represents z in 3D space, draws cube around map
 
         if (grid != null && displayGridGizmos)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         {
             foreach (Node n in grid)
             {
                 Gizmos.color = (n.walkable) ? Color.white : Color.red; //The cube will be white if its walkable and red otherwise
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
                 if (path != null) //If a path exists and contains the current node, paint that node black
                 {
@@ -125,6 +150,8 @@ public class Grid : MonoBehaviour
                         Gizmos.color = Color.black;
                     }
                 }
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
                 Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f)); //Draws a cube around world position of the size 1/1/1 scaled by a little less than the diameter

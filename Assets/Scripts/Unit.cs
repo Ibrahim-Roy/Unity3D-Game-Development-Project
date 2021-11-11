@@ -11,7 +11,11 @@ public class Unit : MonoBehaviour
 
     void Start()
     {
+<<<<<<< Updated upstream
         PathRequests.RequestPath(transform.position, target.position, OnPathFound);
+=======
+        PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+>>>>>>> Stashed changes
     }
 
     public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
