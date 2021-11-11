@@ -12,24 +12,23 @@ public class HostileNPCRanged : HostileNPC
     protected override void Update()
     {
         base.Update();
-    }
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if(other.gameObject.tag == "Player")
-        {
-            target.GetComponent<Player>().takeDamage(2f);
-        }
+         if(distanceToTarget < detectionDistance)
+         {
+             StartCoroutine(attack());
+         }
     }
 
-    private void OnCollisionStay2D(Collision2D other)
+    /*private void OnCollisionStay2D(Collision2D other)
     {
-        if(other.gameObject.tag == "Player")
-        {
-            target.GetComponent<Player>().takeDamage(2f);
-        }
-        else
-        {
-            setRandomRoamDestination();
-        }
+        setRandomRoamDestination();
+    }*/
+
+    private IEnumerator attack()
+    {
+        if (isCoroutineExecuting) yield break;
+        isCoroutineExecuting = true;
+        ((transform.GetChild(0).gameObject).transform.GetChild(0).gameObject).GetComponent<RangedWeapon>().shoot(target.transform.position, "Player");
+        yield return new WaitForSeconds(attackDelayTime);
+        isCoroutineExecuting = false;
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ResourceObject
   - HostileNPC
+  - Flat
   layers:
   - Default
   - TransparentFX

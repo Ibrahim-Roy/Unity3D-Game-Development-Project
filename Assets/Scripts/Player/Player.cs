@@ -11,14 +11,10 @@ public class Player : MonoBehaviour
         {
             health--;
             StartCoroutine(animateTakeDamage(0.2f));
-            //Debug
-            Debug.Log("Player Health: " + health);
         }
         else
         {
-            //Debug
-            Debug.Log("Player is dead");
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 
@@ -132,7 +128,8 @@ public class Player : MonoBehaviour
         //Ranged
         if(currentCombatMode == 1)
         {
-            ((transform.GetChild(0).gameObject).transform.GetChild(0).gameObject).GetComponent<RangedWeapon>().shoot();
+            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            ((transform.GetChild(0).gameObject).transform.GetChild(0).gameObject).GetComponent<RangedWeapon>().shoot(mouseWorldPosition, "HostileNPC");
         }
         
     }

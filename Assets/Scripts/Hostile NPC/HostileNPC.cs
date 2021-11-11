@@ -10,6 +10,8 @@ public abstract class HostileNPC : MonoBehaviour
     public float stoppingDistance;
     public bool territorialRoaming;
     public float detectionDistance;
+    public float attackDelayTime;
+
 
     public void takeDamage(float damage)
     {
@@ -28,6 +30,8 @@ public abstract class HostileNPC : MonoBehaviour
     protected float distanceToTarget;
     protected Vector2 randomRoamDestination;
     protected Vector2 originalPosition;
+    protected bool isCoroutineExecuting = false;
+    protected Coroutine attackCoroutine;
 
     protected virtual void Start() {
         target = GameObject.FindGameObjectWithTag("Player");
@@ -46,6 +50,10 @@ public abstract class HostileNPC : MonoBehaviour
         {
             chasePlayer();
         }
+    }
+
+    protected void OnCollisionStay2D(Collision2D other) {
+        setRandomRoamDestination();
     }
 
     protected void checkDistanceToTarget()
