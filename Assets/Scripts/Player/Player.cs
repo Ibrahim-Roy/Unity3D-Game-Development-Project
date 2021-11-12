@@ -22,6 +22,10 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void incrementHealth(float addHealth){
+        health += addHealth;
+    }
+
     private float movementSpeed = 7.0f;
     private float horizontalInput;
     private float verticalInput;
