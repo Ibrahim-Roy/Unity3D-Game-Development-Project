@@ -8,7 +8,6 @@ public class MainMenu : MonoBehaviour
     public void PlayGame ()
     {
         SceneManager.LoadScene("MainScene"); //select which scene to load
-        Debug.Log("Launching Game");
     }
 
 }

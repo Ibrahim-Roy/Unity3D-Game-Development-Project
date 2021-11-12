@@ -31,7 +31,6 @@ public class TrapObject : MonoBehaviour
     {
         while(true)
         {
-            Debug.Log("Running");
             yield return new WaitForSeconds(damageDelayTime);
             player.GetComponent<Player>().takeDamage(damage);
         }
