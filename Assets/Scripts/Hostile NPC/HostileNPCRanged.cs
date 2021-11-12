@@ -12,16 +12,11 @@ public class HostileNPCRanged : HostileNPC
     protected override void Update()
     {
         base.Update();
-         if(distanceToTarget < detectionDistance)
+         if(distanceToTarget < (stoppingDistance * 2))
          {
              StartCoroutine(attack());
          }
     }
-
-    /*private void OnCollisionStay2D(Collision2D other)
-    {
-        setRandomRoamDestination();
-    }*/
 
     private IEnumerator attack()
     {

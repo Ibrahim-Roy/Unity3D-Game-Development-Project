@@ -21,7 +21,7 @@ public class ResourceObjectScript : MonoBehaviour
         the object is hit, and a boolean called Harvested to animate object before and after
         it is harvested for resources.
 
-        takeDamage() method can be called from player to decrease health 
+        takeDamage() method can be called from player to decrease health
     */
 
     public int totalHealth;
@@ -36,7 +36,7 @@ public class ResourceObjectScript : MonoBehaviour
             if(anim != null)
             {
                 Shake();
-            }  
+            }
             currentHealth--;
         }
         else if(!destroyed)
@@ -47,6 +47,9 @@ public class ResourceObjectScript : MonoBehaviour
                 anim.SetBool("Harvested", true);
             }
             Instantiate(resourceMaterialPrefab, transform.position, transform.rotation);
+            GameObject item = Instantiate(resourceMaterialPrefab, transform.position, transform.rotation);
+            item.transform.position = Vector2.MoveTowards(item.transform.position, new Vector2(item.transform.position.x - 2,
+            item.transform.position.y - 2), 2.0f);
             Invoke("growBack", lifeCycle);
         }
     }
