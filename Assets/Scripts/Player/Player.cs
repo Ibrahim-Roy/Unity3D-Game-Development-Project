@@ -21,6 +21,12 @@ public class Player : MonoBehaviour
             StartCoroutine(reloadWithDelay(2));
         }
     }
+    
+    public void incrementHealth(float addHealth){
+        health += addHealth;
+        GameObject.FindGameObjectWithTag("UI").GetComponent<UserInterface>().SetHealth(health);
+
+    }
 
     public void incrementHealth(float addHealth){
         health += addHealth;

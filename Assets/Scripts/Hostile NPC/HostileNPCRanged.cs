@@ -12,7 +12,7 @@ public class HostileNPCRanged : HostileNPC
     protected override void Update()
     {
         base.Update();
-         if(distanceToTarget < detectionDistance)
+         if(distanceToTarget < (stoppingDistance * 2))
          {
              StartCoroutine(attack());
          }

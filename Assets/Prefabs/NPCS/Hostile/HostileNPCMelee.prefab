@@ -120,8 +120,8 @@ MonoBehaviour:
   maximumRoamingDistance: 10
   stoppingDistance: 0
   territorialRoaming: 1
-  detectionDistance: 6
-  attackDelayTime: 0
+  detectionDistance: 10
+  attackDelayTime: 2
 --- !u!61 &8884754765940771915
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -168,4 +168,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
