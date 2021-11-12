@@ -28,10 +28,6 @@ public class Player : MonoBehaviour
 
     }
 
-    public void incrementHealth(float addHealth){
-        health += addHealth;
-    }
-
     private float movementSpeed = 7.0f;
     private float horizontalInput;
     private float verticalInput;
@@ -163,6 +159,6 @@ public class Player : MonoBehaviour
     private IEnumerator reloadWithDelay(int waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);//CHANGE THIS TO TAKE TO MAIN MENU LATER
+        SceneManager.LoadScene("MainMenu");//CHANGE THIS TO TAKE TO MAIN MENU LATER
     }
 }
