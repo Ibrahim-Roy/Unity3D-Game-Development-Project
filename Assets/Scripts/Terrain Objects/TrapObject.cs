@@ -8,9 +8,12 @@ public class TrapObject : MonoBehaviour
     public float damageDelayTime;
 
     private Coroutine attackCoroutine;
+    private bool isColliding = false;
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Player"){
+            if(isColliding) return;
+            isColliding = true;
             attackCoroutine = StartCoroutine(attack(other.gameObject));
         }
     }
@@ -18,6 +21,8 @@ public class TrapObject : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) {
         if(other.gameObject.tag == "Player")
         {
+            if(!isColliding) return;
+            isColliding = false;
             StopCoroutine(attackCoroutine);   
         }
     }
@@ -26,6 +31,7 @@ public class TrapObject : MonoBehaviour
     {
         while(true)
         {
+            Debug.Log("Running");
             yield return new WaitForSeconds(damageDelayTime);
             player.GetComponent<Player>().takeDamage(damage);
         }

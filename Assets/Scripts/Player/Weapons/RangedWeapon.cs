@@ -10,9 +10,11 @@ public class RangedWeapon : MonoBehaviour
     public void shoot(Vector3 aimPosition, string targetTag)
     {
         Vector3 weaponBarrelPosition = transform.position;
+        GameObject parent = (gameObject.transform.parent).transform.parent.gameObject;
         GameObject arrow = Instantiate(ammunitionPrefab, weaponBarrelPosition, ammunitionPrefab.transform.rotation);
+        Physics2D.IgnoreCollision(arrow.GetComponent<CircleCollider2D>(), parent.GetComponent<CircleCollider2D>());
         arrow.GetComponent<RangedAmmo>().targetTag = targetTag;
-        arrow.GetComponent<RangedAmmo>().sourceTag = (gameObject.transform.parent).transform.parent.tag;
+        arrow.GetComponent<RangedAmmo>().sourceTag = parent.tag;
         aimPosition.z = 0;
         Vector3 shootingDirection = (aimPosition - transform.position).normalized;
         arrow.GetComponent<Rigidbody2D>().velocity = shootingDirection * shootingSpeed;
