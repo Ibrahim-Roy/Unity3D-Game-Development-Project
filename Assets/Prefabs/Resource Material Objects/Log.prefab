@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3666524618153517952}
   - component: {fileID: 6951408163765882905}
-  - component: {fileID: 4413115861691569724}
   - component: {fileID: 8080178084679958936}
+  - component: {fileID: 5382579355348751902}
+  - component: {fileID: 6938898175018843974}
   m_Layer: 0
   m_Name: Log Child
   m_TagString: Untagged
@@ -85,7 +86,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4413115861691569724
+--- !u!111 &8080178084679958936
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379956708898941194}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 8f9d25318fc38e544b99abe1e30caa06, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 8f9d25318fc38e544b99abe1e30caa06, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!61 &5382579355348751902
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,22 +128,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.296875, y: 0.078125}
   m_EdgeRadius: 0
---- !u!111 &8080178084679958936
-Animation:
+--- !u!114 &6938898175018843974
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379956708898941194}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 8f9d25318fc38e544b99abe1e30caa06, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 8f9d25318fc38e544b99abe1e30caa06, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d87072fc6b234144a8978df4f43519f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2175250353731999996
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,7 +151,7 @@ GameObject:
   - component: {fileID: 1770764181152390545}
   m_Layer: 0
   m_Name: Log
-  m_TagString: Untagged
+  m_TagString: Log
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

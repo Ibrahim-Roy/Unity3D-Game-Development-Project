@@ -12,7 +12,7 @@ public class UserInterface : MonoBehaviour
     public Text Death;
 
     float health;
-    int log = 0;
+    public int log = 0;
     int stone = 0;
 
 
@@ -44,6 +44,11 @@ public class UserInterface : MonoBehaviour
     public void SetStone(int _stone)
     {
         stone = _stone;
+    }
+
+    //incrementing item when picked up
+    public void PickupItem(){
+        log++;
     }
 
 }
