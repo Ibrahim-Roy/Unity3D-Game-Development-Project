@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -10,11 +11,14 @@ public class Player : MonoBehaviour
         if(health > 1)
         {
             health--;
+            GameObject.FindGameObjectWithTag("UI").GetComponent<UserInterface>().SetHealth(health);
             StartCoroutine(animateTakeDamage(0.2f));
+
         }
         else
         {
-            Destroy(gameObject);
+            GameObject.FindGameObjectWithTag("UI").GetComponent<UserInterface>().SetHealth(0);
+            StartCoroutine(reloadWithDelay(2));
         }
     }
 
@@ -28,8 +32,10 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        GameObject.FindGameObjectWithTag("UI").GetComponent<UserInterface>().SetHealth(health);
         rbody = GetComponent<Rigidbody2D>();
     }
+
 
    // Update is called once per frame
     private void Update()
@@ -142,5 +148,11 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(time);
         playerColour.a = 1f;
         gameObject.GetComponent<SpriteRenderer>().color = playerColour;
+    }
+
+    private IEnumerator reloadWithDelay(int waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);//CHANGE THIS TO TAKE TO MAIN MENU LATER
     }
 }
