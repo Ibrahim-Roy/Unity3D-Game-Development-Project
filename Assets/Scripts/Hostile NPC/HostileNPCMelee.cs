@@ -22,16 +22,14 @@ public class HostileNPCMelee : HostileNPC
         }
     }
 
-    /*private void OnCollisionStay2D(Collision2D other)
-    {
-            setRandomRoamDestination();
-    }*/
-
     private void OnCollisionExit2D(Collision2D other)
     {
         if(other.gameObject.tag == "Player")
         {
-            StopCoroutine(attackCoroutine);
+            if(attackCoroutine != null)
+            {
+                StopCoroutine(attackCoroutine);
+            }
         }
     }
 

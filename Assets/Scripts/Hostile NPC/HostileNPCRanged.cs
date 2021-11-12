@@ -18,11 +18,6 @@ public class HostileNPCRanged : HostileNPC
          }
     }
 
-    /*private void OnCollisionStay2D(Collision2D other)
-    {
-        setRandomRoamDestination();
-    }*/
-
     private IEnumerator attack()
     {
         if (isCoroutineExecuting) yield break;
