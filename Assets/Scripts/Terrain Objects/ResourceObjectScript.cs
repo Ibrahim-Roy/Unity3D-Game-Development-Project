@@ -46,7 +46,8 @@ public class ResourceObjectScript : MonoBehaviour
             {
                 anim.SetBool("Harvested", true);
             }
-            Instantiate(resourceMaterialPrefab, transform.position, transform.rotation);
+            GameObject item = Instantiate(resourceMaterialPrefab, transform.position, transform.rotation);
+            item.transform.position = Vector2.MoveTowards(item.transform.position, player.transform.position, 2.0f);
             Invoke("growBack", lifeCycle);
         }
     }

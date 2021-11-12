@@ -47,8 +47,19 @@ public class UserInterface : MonoBehaviour
     }
 
     //incrementing item when picked up
-    public void PickupItem(){
-        log++;
+    public void PickupItem(string pickUpTag){
+        Debug.Log(pickUpTag);
+        switch(pickUpTag){
+            case "Log":
+                Debug.Log("Working");
+                log++;
+                break;
+            case "Stone":
+                stone++;
+                break;
+            default:
+                break;
+        }
     }
 
 }
