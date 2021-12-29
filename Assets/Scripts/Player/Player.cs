@@ -35,11 +35,14 @@ public class Player : MonoBehaviour
     private GameObject collisionSourceObject;
     private int currentCombatMode = 0;
     private float health = 10;
+    private Inventory inventory;
 
     private void Awake()
     {
         GameObject.FindGameObjectWithTag("UI").GetComponent<UserInterface>().SetHealth(health);
         rbody = GetComponent<Rigidbody2D>();
+
+        inventory = new Inventory();
     }
 
 
